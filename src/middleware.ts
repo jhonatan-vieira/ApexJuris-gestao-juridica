@@ -6,9 +6,19 @@ export async function middleware(request: NextRequest) {
     request,
   })
 
+  // Verificar se as variáveis de ambiente do Supabase estão configuradas
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  // Se as variáveis não estiverem configuradas, permitir acesso sem autenticação
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.warn('⚠️ Variáveis de ambiente do Supabase não configuradas. Autenticação desabilitada.')
+    return supabaseResponse
+  }
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         getAll() {
