@@ -45,6 +45,14 @@
 
 :root {
   --radius: 0.625rem;
+  
+  /* Apex Juris - Paleta de Cores Premium */
+  --apex-navy: #0A2240;
+  --apex-charcoal: #333333;
+  --apex-gold: #D4AF37;
+  --apex-white: #FFFFFF;
+  --apex-light-gray: #F5F5F5;
+  
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   
